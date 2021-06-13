@@ -26,7 +26,7 @@ module.exports = {
       },
       {
        test: /\.(jpe?g|png|gif|svg)$/i,
-       loader: ['file-loader?name=[name].[ext]&outputhPath=images/&publicPath=images/'],
+       loader: 'file-loader',
      },
       {
         test: /\.sass$/,
@@ -59,8 +59,10 @@ module.exports = {
       port: 3000,
       server: { baseDir: ['dist'] }
     }),
-    new CopyPlugin([
-      { from: 'assets', to: 'assets' }
-    ])
+    new CopyPlugin({
+      patterns: [
+        { from: 'assets', to: 'assets' }
+      ],
+    })
   ]
 };
